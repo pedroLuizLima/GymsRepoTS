@@ -4,7 +4,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { createAndAuthenticateUser } from '../../../utils/test/create-and-authenticate-user'
 import { prisma } from '../../../lib/prisma'
 
-describe ('Create check-in (e2e)', () => {
+describe ('Create Check-in (e2e)', () => {
     beforeAll(async () => {
         await app.ready()
     })
