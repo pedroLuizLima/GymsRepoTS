@@ -14,11 +14,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  ADMIN
+  MEMBER
+}
+
 model User {
   id            String    @id @default(uuid())
   name          String
   email         String    @unique
   password_hash String
+  role          Role      @default(MEMBER)
   created_at    DateTime  @default(now())
   checkIns      CheckIn[]
 
@@ -40,14 +46,14 @@ model CheckIn {
 }
 
 model Gym {
-  id          String    @id @default(uuid())
+  id          String  @id @default(uuid())
   title       String
   description String?
   phone       String?
   latitude    Decimal
   longitude   Decimal
 
-  checkIns    CheckIn[]
+  checkIns CheckIn[]
 
   @@map("gyms")
 }
